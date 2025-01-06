@@ -57,13 +57,6 @@ int main(int argc, char **argv) {
         {"d", "d", "r",},
     };
 
-    for (auto problem : problems) {
-        for (auto record : problem) {
-            std::cout << record << " ";
-        }
-        std::cout << std::endl;
-    }
-
     // ---- 不要修改以下代码 ----
 
     for (auto i = 0; i < 3; ++i) {
