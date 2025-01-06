@@ -23,10 +23,7 @@ public:
     // TODO: 实现移动构造器
     DynFibonacci(DynFibonacci && other) noexcept {
         cached = other.cached;
-        cache = new size_t[cached];
-        for (int i = 0; i < cached; ++i) {
-            cache[i] = other.cache[i];
-        }
+        cache = other.cache;
         other.cache = nullptr;
         other.cached = 0;
     }
@@ -38,10 +35,8 @@ public:
             return *this;
         }
         cached = other.cached;
-        cache = new size_t[cached];
-        for (int i = 0; i < cached; ++i) {
-            cache[i] = other.cache[i];
-        }
+        delete[] cache;
+        cache = other.cache;
         other.cache = nullptr;
         other.cached = 0;
     }
@@ -56,6 +51,7 @@ public:
         for (; cached <= i; ++cached) {
             cache[cached] = cache[cached - 1] + cache[cached - 2];
         }
+        cached--;
         return cache[i];
     }
 
